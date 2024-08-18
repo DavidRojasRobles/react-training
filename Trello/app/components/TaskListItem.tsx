@@ -9,7 +9,7 @@ interface Props {
   task: ITask;
 }
 
-export default function TaskListItem({ task }: Props) {
+export const TaskListItem = ({ task }: Props) => {
   return (
     <TouchableOpacity style={styles.container}>
       <Text style={styles.text}>{task.description}</Text>
@@ -17,7 +17,7 @@ export default function TaskListItem({ task }: Props) {
       <AntDesign name="close" size={16} color="gray" />
     </TouchableOpacity>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -32,3 +32,4 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+

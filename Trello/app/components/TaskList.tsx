@@ -6,11 +6,11 @@ import {
   TextInput,
   Button,
 } from "react-native";
-import TaskListItem from "./TaskListItem";
+import { ITask, TaskListItem } from "./TaskListItem";
 import { useState } from "react";
 
 export const TaskList = () => {
-  const [tasks, setTasks] = useState([
+  const [tasks, setTasks] = useState<ITask[]>([
     { description: "First task" },
     { description: "Second task" },
   ]);
