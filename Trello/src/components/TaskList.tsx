@@ -11,14 +11,14 @@ import { useState } from "react";
 
 export const TaskList = () => {
   const [tasks, setTasks] = useState<ITask[]>([
-    { description: "First task" },
-    { description: "Second task" },
+    { id: "123", description: "First task" },
+    { id: "456", description: "Second task" },
   ]);
 
   const [newTask, setNewTask] = useState("");
 
   const createTask = () => {
-    setTasks([...tasks, { description: newTask }]);
+    setTasks([...tasks, { id: '-1', description: newTask }]);
 
     setNewTask("");
   };
