@@ -5,13 +5,14 @@ import Realm from "../providers/Realm";
 
 export default function RootLayout() {
   return (
-    <ThemeProvider value={DarkTheme}>
-      <Realm>
-        <Stack screenOptions={{}}></Stack>
-      </Realm>
-
+    <>
+      <ThemeProvider value={DarkTheme}>
+        <Realm>
+          <Stack screenOptions={{}}></Stack>
+        </Realm>
+      </ThemeProvider>
       <StatusBar style="light" />
-    </ThemeProvider>
+    </>
   );
 }
 
