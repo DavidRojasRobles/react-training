@@ -6,20 +6,32 @@ import {
   TextInput,
   Button,
 } from "react-native";
-import { ITask, TaskListItem } from "./TaskListItem";
-import { useState } from "react";
-import { useQuery, useRealm } from "@realm/react";
+import { TaskListItem } from "./TaskListItem";
+import { useEffect, useState } from "react";
+import { useQuery, useRealm, useUser } from "@realm/react";
 import { Task } from "../models/Task";
 
 export const TaskList = () => {
   const realm = useRealm();
   const tasks = useQuery(Task);
 
+  const user = useUser();
+
+  useEffect(() => {
+    console.log(
+      `DEAREST - : user = ${JSON.stringify(
+        user,
+        (key, value) => (value instanceof Map ? [...value] : value),
+        2
+      )}`
+    );
+  }, [user]);
+
   const [newTask, setNewTask] = useState("");
 
   const createTask = () => {
     realm.write(() => {
-      realm.create(Task, { description: newTask, user_id: "123" });
+      realm.create(Task, { description: newTask, user_id: user.id ?? "123" });
     });
     setNewTask("");
   };

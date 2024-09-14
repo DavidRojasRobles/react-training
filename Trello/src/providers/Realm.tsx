@@ -1,7 +1,16 @@
 import { PropsWithChildren } from "react";
-import { RealmProvider } from "@realm/react";
+import { RealmProvider, AppProvider, UserProvider } from "@realm/react";
 import { Task } from "../models/Task";
+import { Login } from "../components/Login";
+
+const appId = "trello-zmmdose";
 
 export default function RealmCustomProvider({ children }: PropsWithChildren) {
-  return <RealmProvider schema={[Task]}>{children}</RealmProvider>;
+  return (
+    <AppProvider id={appId}>
+      <UserProvider fallback={Login}>
+        <RealmProvider schema={[Task]}>{children}</RealmProvider>
+      </UserProvider>
+    </AppProvider>
+  );
 }
